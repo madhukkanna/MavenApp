@@ -26,7 +26,7 @@ public class Alpha_LoginPage extends Alpha_GeneralPage{
 	public Alpha_LoginPage enterUserName(){
 		
 		if(enterTextByAccessibilityId("E-mail", "testleaf50@gmail.com"))
-			Alpha_ReporterUtilities.reportStep("UserName entered successfully", "PASS");
+			Alpha_ReporterUtilities.reportStep("Entered UserName successfully", "PASS");
 		else
 			Alpha_ReporterUtilities.reportStep("UserName could not be entered", "FAIL");
 		return this;
