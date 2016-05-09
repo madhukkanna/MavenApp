@@ -1,0 +1,3701 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+ExtentReports Library 2.40.2 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+Documentation: http://extentreports.relevantcodes.com 
+-->
+
+<meta charset='UTF-8' /> 
+<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+<meta name='robots' content='noodp, noydir' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<title>
+TestLeaf Appium Automation Project
+</title>
+
+
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+<link href='https://cdn.rawgit.com/anshooarora/extentreports/e4f8ea1de961161791c01b99a71a1e17f81125cf/cdn/extent.css' type='text/css' rel='stylesheet' />
+
+<style>
+
+      
+        
+      
+    
+</style>
+</head>
+
+
+<body class='extent standard hide-overflow'>
+<!-- nav -->
+<nav>
+<div class='logo-container'>
+<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+<span>ExtentReports</span>
+</a>
+<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+</div>
+<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+<li class='analysis waves-effect'><a href='#!' class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a></li>
+</ul>
+<span class='report-name'>Appium - POM Test Automation Report</span> <span class='report-headline'></span>
+<ul class='right hide-on-med-and-down nav-right'>
+<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+<i class='mdi-hardware-desktop-windows'></i>
+</li>
+<li>
+<span class='suite-started-time'>2016-04-30 11:32:19</span>
+</li>
+<li>
+<span>v2.40.2</span>
+</li>
+</ul>
+</nav>
+<!-- /nav -->
+
+<!-- container -->
+<div class='container'>
+
+<!-- dashboard -->
+<div id='dashboard-view' class='row'>
+<div class='time-totals'>
+<div class='col l2 m4 s6'>
+<div class='card suite-total-tests'> 
+<span class='panel-name'>Total Tests</span> 
+<span class='total-tests'> <span class='panel-lead'></span> </span> 
+</div> 
+</div>
+<div class='col l2 m4 s6'>
+<div class='card suite-total-steps'> 
+<span class='panel-name'>Total Steps</span> 
+<span class='total-steps'> <span class='panel-lead'></span> </span> 
+</div> 
+</div>
+<div class='col l2 m4 s12'>
+<div class='card suite-total-time-current'> 
+<span class='panel-name'>Total Time Taken (Current Run)</span> 
+<span class='suite-total-time-current-value panel-lead'>119h 16m 7s+66ms</span> 
+</div> 
+</div>
+<div class='col l2 m4 s12'>
+<div class='card suite-total-time-overall'> 
+<span class='panel-name'>Total Time Taken (Overall)</span> 
+<span class='suite-total-time-overall-value panel-lead'>-349h -20942m -1256539s+-980ms</span> 
+</div> 
+</div>
+<div class='col l2 m4 s6 suite-start-time'>
+<div class='card accent green-accent'> 
+<span class='panel-name'>Start</span> 
+<span class='panel-lead suite-started-time'>2016-04-25 12:16:12</span> 
+</div> 
+</div>
+<div class='col l2 m4 s6 suite-end-time'>
+<div class='card accent pink-accent'> 
+<span class='panel-name'>End</span> 
+<span class='panel-lead suite-ended-time'>2016-04-30 11:32:19</span> 
+</div> 
+</div>
+</div>
+<div class='charts'>
+<div class='col s12 m6 l4 fh'> 
+<div class='card-panel'> 
+<div>
+<span class='panel-name'>Tests View</span>
+</div> 
+<div class='panel-setting modal-trigger test-count-setting right'>
+<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+</div> 
+<div class='chart-box'>
+<canvas class='text-centered' id='test-analysis'></canvas>
+</div> 
+<div>
+<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+</div> 
+<div>
+<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+</div> 
+</div> 
+</div> 
+<div class='col s12 m6 l4 fh'> 
+<div class='card-panel'> 
+<div>
+<span class='panel-name'>Steps View</span>
+</div> 
+<div class='panel-setting modal-trigger step-status-filter right'>
+<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+</div> 
+<div class='chart-box'>
+<canvas class='text-centered' id='step-analysis'></canvas>
+</div> 
+<div>
+<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+</div> 
+<div>
+<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+</div> 
+</div> 
+</div>
+<div class='col s12 m12 l4 fh'> 
+<div class='card-panel'> 
+<span class='panel-name'>Pass Percentage</span> 
+<span class='pass-percentage panel-lead'></span> 
+<div class='progress light-blue lighten-3'> 
+<div class='determinate light-blue'></div> 
+</div> 
+</div> 
+</div>
+</div>
+<div class='system-view'>
+<div class='col l4 m12 s12'>
+<div class='card-panel'>
+<span class='label info outline right'>Environment</span>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Windows 8.1</td>
+</tr>
+<tr>
+<td>User Name</td>
+<td>Madhukkanna</td>
+</tr>
+<tr>
+<td>Java Version</td>
+<td>1.8.0_60</td>
+</tr>
+<tr>
+<td>Host Name</td>
+<td>MADHAN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- /dashboard -->
+
+<!-- tests -->
+<div id='test-view' class='row _addedTable'>
+<div class='col _addedCell1'>
+<div class='contents'>
+<div class='card-panel heading'>
+<h5>Tests</h5>
+</div>
+<div class='card-panel filters'>
+<div>
+<a data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#' class='dropdown-button button tests-toggle'><i class='mdi-action-subject icon'></i></a>
+<ul id='tests-toggle' class='dropdown-content'>
+<li class='pass'><a href='#!'>Pass</a></li>
+<li class='fail'><a href='#!'>Fail</a></li>
+<li class='skip'><a href='#!'>Skip</a></li>
+<li class='unknown'><a href='#!'>Unknown</a></li>
+<li class='divider'></li>
+<li class='clear'><a href='#!'>Clear Filters</a></li>
+</ul>
+</div>
+<div>
+<a id='clear-filters' alt='Clear Filters' title='Clear Filters'><i class='mdi-navigation-close icon'></i></a>
+</div>
+<div>&nbsp;&middot;&nbsp;</div>
+<div>
+<a id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'><i class='mdi-action-track-changes icon'></i></a>
+</div>
+<div>
+<a id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters' class='enabled'><i class='mdi-navigation-refresh icon'></i></i></a>
+</div>
+<div>&nbsp;&middot;</div>
+<div class='search' alt='Search Tests' title='Search Tests'>
+<div class='input-field left'>
+<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+</div>
+<i class='mdi-action-search icon'></i>
+</div>
+</div>
+<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+<div class='wrapper'>
+<ul id='test-collection' class='test-collection'>
+<li class='collection-item test displayed active unknown ' extentid='351c4bfe-5dea-4029-9f9f-6f226030d1c1'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:16:12</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:16:12</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='3b4b0575-e49a-4dbb-90e1-289aea94f45d'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:16:33</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:16:33</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='908f9627-3894-4446-9f87-dc09beec65c8'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:27:45</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:27:45</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='08402ddc-1809-4909-a4b9-30862ffc53c7'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:32:18</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:32:21</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 3s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='0c1605ee-9762-4de3-aea9-9309f24bdfe8'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:44:04</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:45:02</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 58s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:44:17</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/157853835.jpg" src="./../reports/images/157853835.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:44:28</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/114280318.jpg" src="./../reports/images/114280318.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:45:00</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/462351073.jpg" src="./../reports/images/462351073.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:45:02</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/188855770.jpg" src="./../reports/images/188855770.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='14327212-a05e-44e3-a6ea-0a07c02c1438'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:50:39</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:52:15</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 36s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:50:58</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/558326556.jpg" src="./../reports/images/558326556.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:51:30</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/379675885.jpg" src="./../reports/images/379675885.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:52:06</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/111138731.jpg" src="./../reports/images/111138731.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:52:15</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/896289828.jpg" src="./../reports/images/896289828.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='53dcda3d-7df1-4839-b4d5-6aa0ccf4d8fd'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:52:39</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:53:19</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 40s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:52:54</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/245598019.jpg" src="./../reports/images/245598019.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:53:05</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/152786149.jpg" src="./../reports/images/152786149.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:53:17</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/466365529.jpg" src="./../reports/images/466365529.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:53:19</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/674287899.jpg" src="./../reports/images/674287899.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='b6df9b9f-2838-44b8-9fbb-65d87e1f74ef'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 12:57:12</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 12:57:51</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 39s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:57:26</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/539417110.jpg" src="./../reports/images/539417110.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:57:36</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/586139726.jpg" src="./../reports/images/586139726.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:57:49</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/626018245.jpg" src="./../reports/images/626018245.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>12:57:51</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/424894570.jpg" src="./../reports/images/424894570.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='1ed23620-75c8-4315-844d-f87b9c1436f6'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:02:15</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:02:16</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='923d75cf-4ad4-4e05-a850-495843a1ebaf'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:02:48</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:03:13</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 25s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:03:01</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/466354690.jpg" src="./../reports/images/466354690.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:03:12</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/300272722.jpg" src="./../reports/images/300272722.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='c3260c03-401e-4bec-8cfa-9b3a8756978a'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:17:37</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:17:39</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 2s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='caf7572c-4fdf-430f-bc30-697f6b37381a'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:17:48</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:18:02</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:18:01</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/179268027.jpg" src="./../reports/images/179268027.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='6610f795-f0e5-4940-b7d1-5013ff109ac7'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:19:18</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:19:57</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 39s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:19:31</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/700502506.jpg" src="./../reports/images/700502506.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:19:42</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/161484992.jpg" src="./../reports/images/161484992.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:19:55</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/540568554.jpg" src="./../reports/images/540568554.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:19:57</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/335134755.jpg" src="./../reports/images/335134755.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='caa2470a-2ba2-48f2-a454-91ff84c9f889'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:22:45</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:23:27</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 42s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:22:59</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/639093667.jpg" src="./../reports/images/639093667.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='ac9bc282-5f08-4b10-971f-870ad231701b'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:23:45</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:24:25</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 40s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:24:00</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/184171564.jpg" src="./../reports/images/184171564.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:24:11</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/736571140.jpg" src="./../reports/images/736571140.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:24:23</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/757112524.jpg" src="./../reports/images/757112524.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:24:25</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/208663624.jpg" src="./../reports/images/208663624.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='b9b9d621-ca8f-40f4-9474-ac0a1a41cfc5'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:26:21</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:26:46</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 25s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:26:34</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/492100045.jpg" src="./../reports/images/492100045.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:26:45</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/367252183.jpg" src="./../reports/images/367252183.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='203eb514-d81d-474b-9538-0ae88201fa77'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 13:28:28</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 13:29:07</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 39s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:28:41</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/764498309.jpg" src="./../reports/images/764498309.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:28:52</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/514017766.jpg" src="./../reports/images/514017766.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:29:05</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/233277926.jpg" src="./../reports/images/233277926.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:29:07</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/156997240.jpg" src="./../reports/images/156997240.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='08ecfd4f-4354-4f2c-bc9f-9e9815b3c9c5'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 14:07:35</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 14:08:36</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 1s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:07:55</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/402197175.jpg" src="./../reports/images/402197175.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:08:06</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/136739003.jpg" src="./../reports/images/136739003.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='d4a32b0b-c1ee-447a-a80a-6a293f85eec2'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 14:12:27</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 14:13:06</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 39s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:12:40</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/458367260.jpg" src="./../reports/images/458367260.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:12:50</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/837038807.jpg" src="./../reports/images/837038807.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:13:03</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/92566767.jpg" src="./../reports/images/92566767.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:13:05</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/55317954.jpg" src="./../reports/images/55317954.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='05baf4f2-e6ea-41ca-b95b-7d8ffc9a2a5e'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 14:17:32</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 14:17:32</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='80232e2d-42a2-46c6-a3eb-279afb401b65'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 18:42:56</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 18:43:12</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 16s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:43:12</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/332496142.jpg" src="./../reports/images/332496142.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='46127d17-c458-4591-87d4-def7fe086ddb'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 18:47:47</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 18:48:02</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:48:02</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/122155520.jpg" src="./../reports/images/122155520.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='8eb5fb76-35f1-4607-91bc-ce090848b727'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 18:49:48</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 18:50:03</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:50:03</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/649850605.jpg" src="./../reports/images/649850605.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='1c143c0a-84ac-4f03-a574-d0c54f88212b'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:00:31</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:00:46</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:00:46</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/831270027.jpg" src="./../reports/images/831270027.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='944eea73-79cb-48bf-8beb-0f7196053ab3'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:01:27</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:01:28</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='a9ff6b40-dd04-49ba-a269-7744280d18d2'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:01:43</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:01:57</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:01:57</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/203556969.jpg" src="./../reports/images/203556969.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='51fa61a6-c2fa-4718-a3fa-ef97c4160742'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:03:19</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:03:34</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:03:34</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/599158594.jpg" src="./../reports/images/599158594.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='2fc6bd8a-b31b-4904-9d0a-0702fda1623c'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:04:45</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:05:00</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:05:00</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/359539356.jpg" src="./../reports/images/359539356.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='ba8f0d72-5b78-4274-8284-b253b89870e8'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:05:53</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:05:53</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='68a4f4ba-5b9c-4faf-a0d7-a688030ef536'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:06:09</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:06:28</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:06:24</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/314489426.jpg" src="./../reports/images/314489426.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='38b203d5-9487-4164-b487-9a91fa9e22d5'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:06:46</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:06:47</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='7cbb6367-442d-435d-9baa-78ef68a33f66'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:06:53</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:06:54</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='4f93dba5-dc5f-499e-a943-bde132d0786d'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:07:19</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:07:38</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:07:34</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/690000350.jpg" src="./../reports/images/690000350.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='6d10174c-304c-47fd-b4a1-63d0a09f54cb'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:08:30</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:08:45</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:08:45</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/498987368.jpg" src="./../reports/images/498987368.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='7d398706-3067-41e8-8925-bda4af413226'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:17:17</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:17:30</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 13s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:17:30</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/826044000.jpg" src="./../reports/images/826044000.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='daf0b1b8-a9c7-4574-b639-74c0fca1916e'>
+<div class='test-head'>
+<span class='test-name'>SignUp to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:31:51</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:32:07</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 16s+0ms</span>
+</div>
+<div class='test-desc'>SignUp to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:32:04</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/12704020.jpg" src="./../reports/images/12704020.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='8d0626c0-031f-486c-b0db-b9e40c4bfbc5'>
+<div class='test-head'>
+<span class='test-name'>SignUp to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:36:15</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:36:28</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 13s+0ms</span>
+</div>
+<div class='test-desc'>SignUp to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:36:28</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/154496004.jpg" src="./../reports/images/154496004.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='f8a73776-ebe9-46ae-a323-ab8918cb072c'>
+<div class='test-head'>
+<span class='test-name'>SignUp to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:38:14</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:38:34</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 20s+0ms</span>
+</div>
+<div class='test-desc'>SignUp to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:38:28</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/181052257.jpg" src="./../reports/images/181052257.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:38:34</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/127251730.jpg" src="./../reports/images/127251730.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='59bf38f5-98c9-4120-9c32-41279616c139'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:55:58</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:56:16</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 18s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:56:11</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/432737228.jpg" src="./../reports/images/432737228.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:56:16</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/585702543.jpg" src="./../reports/images/585702543.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='3c95b408-8318-4750-a080-dc37fc0a8597'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-25 19:58:57</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-25 19:59:10</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 13s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:59:10</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/530479375.jpg" src="./../reports/images/530479375.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='4f2160eb-f9f3-4c26-8dc9-f452f78f871e'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:12:35</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:12:49</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='cdcfd727-9713-4aaa-bea6-7135cf41c4dc'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:13:09</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:13:23</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='8fa19d28-14d0-447c-849a-39966a203e85'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:18:07</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:18:21</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:18:20</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/817941644.jpg" src="./../reports/images/817941644.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='fb86104c-007f-4817-84fc-0c121ed88a8b'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:22:39</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:23:04</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 25s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:22:52</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/713289305.jpg" src="./../reports/images/713289305.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:23:03</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/246597576.jpg" src="./../reports/images/246597576.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='7e4f95df-a7ec-48c7-be3c-a136c07a02f4'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:25:20</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:25:46</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 26s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:25:34</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/606610345.jpg" src="./../reports/images/606610345.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:25:44</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/901470394.jpg" src="./../reports/images/901470394.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='13302f18-5ef6-4959-99fa-5898932658f9'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:26:41</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:27:06</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 25s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:26:55</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/798327682.jpg" src="./../reports/images/798327682.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:27:05</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/304035734.jpg" src="./../reports/images/304035734.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='e18d2738-8453-4334-9bf1-53321302ae85'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:27:54</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:28:25</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 31s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:28:08</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/269058891.jpg" src="./../reports/images/269058891.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:28:19</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/55142373.jpg" src="./../reports/images/55142373.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='892bdf47-5ba6-443e-94d7-1f0e645fa7b0'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 11:31:59</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 11:32:30</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 31s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:32:13</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/668587099.jpg" src="./../reports/images/668587099.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:32:23</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/143994986.jpg" src="./../reports/images/143994986.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='0a6fd25d-0fa2-4599-89a3-69221d389e61'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:08:32</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:09:00</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 28s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:08:46</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/338250643.jpg" src="./../reports/images/338250643.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:08:56</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/541683419.jpg" src="./../reports/images/541683419.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='c5317345-a941-4c61-8057-f14c475a2027'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:10:03</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:10:31</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 28s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:10:17</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/341315817.jpg" src="./../reports/images/341315817.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:10:27</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/799837711.jpg" src="./../reports/images/799837711.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='ca799352-6afe-459e-9969-1484ef989db1'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:11:52</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:12:31</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 39s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:12:05</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/34999651.jpg" src="./../reports/images/34999651.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:12:15</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/302693800.jpg" src="./../reports/images/302693800.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:12:28</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/622166715.jpg" src="./../reports/images/622166715.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:12:30</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/192413652.jpg" src="./../reports/images/192413652.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='aa146b90-ff4f-4db7-83f2-5842bd6d3524'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:13:48</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:14:19</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 31s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:14:01</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/729831530.jpg" src="./../reports/images/729831530.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:14:12</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/572976420.jpg" src="./../reports/images/572976420.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='7c56b2f5-3ba7-491f-af68-5c818c96326d'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:15:36</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:16:10</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 34s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:15:49</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/389224461.jpg" src="./../reports/images/389224461.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:16:00</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/902083945.jpg" src="./../reports/images/902083945.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='55317e17-29ed-4b03-b46b-69666c022ac4'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:24:29</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:25:00</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 31s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:24:42</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/408283278.jpg" src="./../reports/images/408283278.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:24:53</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/71793329.jpg" src="./../reports/images/71793329.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='fde8150a-44b4-4f28-8ea5-393dfae7049d'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:25:32</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:26:03</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 31s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:25:46</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/222711183.jpg" src="./../reports/images/222711183.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:25:57</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/75294774.jpg" src="./../reports/images/75294774.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='1fc7af02-aee4-4ffb-b70d-a7c63a01f2bf'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:27:56</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:28:28</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 32s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:28:10</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/552837418.jpg" src="./../reports/images/552837418.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:28:22</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/871477273.jpg" src="./../reports/images/871477273.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='3e194fd9-c1b4-4619-a63d-87f9c6767df9'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:28:48</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:29:08</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 20s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:29:02</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/365316006.jpg" src="./../reports/images/365316006.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='4a8f39bf-e72d-46cf-9042-0f5e26c4b903'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:29:32</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:29:55</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 23s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:29:47</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/594886163.jpg" src="./../reports/images/594886163.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='fe090fa9-cc39-4a8f-8ea3-1c2d5c63272f'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:30:46</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:31:07</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 21s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:31:01</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/536506829.jpg" src="./../reports/images/536506829.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='f88f35f7-cbae-4f57-aedc-26b94b796c77'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:31:41</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:32:01</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 20s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:31:55</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/531733830.jpg" src="./../reports/images/531733830.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='d2bb545e-d078-40db-88f4-c0f82a6ff666'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 13:33:42</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 13:34:01</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>13:33:55</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/665949459.jpg" src="./../reports/images/665949459.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active fail ' extentid='15cc55ff-dbd7-4264-80bd-a93516d490c1'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize fail'>fail</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 15:10:53</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 15:11:14</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 21s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:11:07</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/135196634.jpg" src="./../reports/images/135196634.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:11:13</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/812118288.jpg" src="./../reports/images/812118288.jpg"></td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:11:14</td>
+<td class='step-details'>UserName could not be entered<img class="report-img" data-featherlight="./../reports/images/204393887.jpg" src="./../reports/images/204393887.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='9703c66e-3e24-4a22-ab51-5fb872d53696'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 15:22:44</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 15:23:34</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 50s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:22:59</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/607847240.jpg" src="./../reports/images/607847240.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:23:04</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/789786127.jpg" src="./../reports/images/789786127.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='30bff462-0152-4471-abde-6493dc59abf2'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 15:27:43</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 15:28:14</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 31s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:27:57</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/802240898.jpg" src="./../reports/images/802240898.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:28:03</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/603455603.jpg" src="./../reports/images/603455603.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:28:14</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/259873367.jpg" src="./../reports/images/259873367.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='bc0eccfe-e375-4712-b94e-767f40c8bfab'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:19:15</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:19:59</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 44s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:19:28</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/840982172.jpg" src="./../reports/images/840982172.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='a76863c9-e115-4d57-87e7-005c1152214c'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:21:14</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:21:33</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:21:27</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/737515492.jpg" src="./../reports/images/737515492.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='2c824a8b-7617-4306-baa7-27fa968b5283'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:26:40</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:27:27</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 47s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:26:54</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/372789795.jpg" src="./../reports/images/372789795.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:27:05</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/146225717.jpg" src="./../reports/images/146225717.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:27:21</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/779134714.jpg" src="./../reports/images/779134714.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:27:27</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/905518345.jpg" src="./../reports/images/905518345.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='52bc22e7-c762-4ab0-9849-f8a121c60f0c'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:32:53</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:33:33</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 40s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:33:06</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/279871942.jpg" src="./../reports/images/279871942.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:33:17</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/680131448.jpg" src="./../reports/images/680131448.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:33:30</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/637972078.jpg" src="./../reports/images/637972078.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:33:32</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/639688206.jpg" src="./../reports/images/639688206.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='2debb092-b86c-46a8-8705-a3354662cf4b'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:33:52</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:34:32</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 40s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:34:06</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/123389518.jpg" src="./../reports/images/123389518.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:34:16</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/512715612.jpg" src="./../reports/images/512715612.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:34:29</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/312331686.jpg" src="./../reports/images/312331686.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:34:32</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/738145783.jpg" src="./../reports/images/738145783.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='b24e3a11-52f3-446b-8b8e-2184a88d907e'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:42:40</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:43:21</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 41s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:42:53</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/680632030.jpg" src="./../reports/images/680632030.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:43:05</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/110282016.jpg" src="./../reports/images/110282016.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:43:17</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/220783677.jpg" src="./../reports/images/220783677.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:43:20</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/796446287.jpg" src="./../reports/images/796446287.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='4a74e8f9-2446-4dbf-b971-f0a1ac8dc424'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:51:32</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:51:34</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 2s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='4fbd0f24-d74b-4909-80fa-92c3cf6fa28d'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:51:49</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:52:58</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 9s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:52:02</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/776150515.jpg" src="./../reports/images/776150515.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:52:12</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/342277519.jpg" src="./../reports/images/342277519.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:52:25</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/855721370.jpg" src="./../reports/images/855721370.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:52:27</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/291891736.jpg" src="./../reports/images/291891736.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='9fee5188-da47-4ccf-a5f6-3c0acd6f638c'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:54:48</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:55:27</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 39s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:55:01</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/198280750.jpg" src="./../reports/images/198280750.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:55:12</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/187245731.jpg" src="./../reports/images/187245731.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:55:24</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/289726498.jpg" src="./../reports/images/289726498.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:55:27</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/68026933.jpg" src="./../reports/images/68026933.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='16dc0ddf-ab35-45e7-b05a-3c666fee7392'>
+<div class='test-head'>
+<span class='test-name'>SignIn to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:56:27</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:57:09</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 42s+0ms</span>
+</div>
+<div class='test-desc'>SignIn to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:56:41</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/739918487.jpg" src="./../reports/images/739918487.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:56:51</td>
+<td class='step-details'>UserName entered successfully<img class="report-img" data-featherlight="./../reports/images/789228657.jpg" src="./../reports/images/789228657.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:57:03</td>
+<td class='step-details'>Password entered successfully<img class="report-img" data-featherlight="./../reports/images/339077889.jpg" src="./../reports/images/339077889.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:57:06</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/12177691.jpg" src="./../reports/images/12177691.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='287728b6-67fe-4f5c-83e7-5a4635c5c5ee'>
+<div class='test-head'>
+<span class='test-name'>SignUp to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 18:58:23</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 18:58:42</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+0ms</span>
+</div>
+<div class='test-desc'>SignUp to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:58:36</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/413465709.jpg" src="./../reports/images/413465709.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>18:58:42</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/578670010.jpg" src="./../reports/images/578670010.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='9d9ba7dd-240b-4c11-aa3f-14848b94384c'>
+<div class='test-head'>
+<span class='test-name'>SignUp to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 19:03:14</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 19:03:42</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 28s+0ms</span>
+</div>
+<div class='test-desc'>SignUp to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:03:27</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/70692719.jpg" src="./../reports/images/70692719.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:03:33</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/324064413.jpg" src="./../reports/images/324064413.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='fda628eb-cd00-4dac-ba70-22c725cfccea'>
+<div class='test-head'>
+<span class='test-name'>SignUp to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-26 19:05:36</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-26 19:06:04</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 28s+0ms</span>
+</div>
+<div class='test-desc'>SignUp to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:05:49</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/403290260.jpg" src="./../reports/images/403290260.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>19:05:55</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/124913804.jpg" src="./../reports/images/124913804.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='7ce1f36b-a27b-42d9-a611-2f9566b30cdf'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-30 11:09:31</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-30 11:09:32</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='8f5f7581-56a5-4da7-8aeb-6f732bd9cd7d'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-30 11:10:04</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-30 11:10:58</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 54s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:10:20</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/516563844.jpg" src="./../reports/images/516563844.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:10:27</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/222511837.jpg" src="./../reports/images/222511837.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active unknown ' extentid='0d79891b-5fff-4d79-b8f7-40d2f3246e80'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize unknown'>unknown</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-30 11:13:55</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-30 11:13:56</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='3f271a7c-f575-49a2-9454-e2514e675ef9'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-30 11:14:19</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-30 11:15:10</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 51s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:14:32</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/319919999.jpg" src="./../reports/images/319919999.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:14:38</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/251352636.jpg" src="./../reports/images/251352636.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='8bf3136e-143c-4c47-b447-7fed6b3fb528'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-30 11:25:20</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-30 11:25:40</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 20s+0ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:25:34</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class="report-img" data-featherlight="./../reports/images/156052560.jpg" src="./../reports/images/156052560.jpg"></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:25:39</td>
+<td class='step-details'>Login done successfully<img class="report-img" data-featherlight="./../reports/images/390243237.jpg" src="./../reports/images/390243237.jpg"></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass ' extentid='ca6e9965-71ca-458e-9650-86892c242d6b'>
+<div class='test-head'>
+<span class='test-name'>Chnage Password to Alpha App </span>
+<span class='test-status label right outline capitalize pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2016-04-30 11:31:59</span>
+<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2016-04-30 11:32:18</span>
+<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+245ms</span>
+</div>
+<div class='test-desc'>Chnage Password to Alpha app (using POM framework)</div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:32:12</td>
+<td class='step-details'>The app activity: Android Shopping started successfully<img class='report-img' data-featherlight='./../reports/images/527131053.jpg' src='./../reports/images/527131053.jpg' /></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>11:32:18</td>
+<td class='step-details'>Login done successfully<img class='report-img' data-featherlight='./../reports/images/705833205.jpg' src='./../reports/images/705833205.jpg' /></td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id='test-details-wrapper' class='col _addedCell2'>
+<div class='contents'>
+<div class='card-panel details-view'>
+<h5 class='details-name'></h5>
+<div class='details-container'>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- /tests -->
+
+<!-- categories -->
+<!-- /categories -->
+
+<!-- exceptions -->
+<!-- /exceptions -->
+
+<!-- testrunner logs -->
+<!-- /testrunner logs -->
+
+</div>
+<!-- /container -->
+
+<!-- test dashboard counts setting -->
+<div id='test-count-setting' class='modal bottom-sheet'> 
+<div class='modal-content'> 
+<h5>Configure Tests Count Setting</h5> 
+<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+<br> 
+<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+<br> 
+<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+<label for='childNodes'>Child Tests Only</label> 
+</div> 
+<div class='modal-footer'> 
+<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+</div> 
+</div>
+<!-- /test dashboard counts setting -->
+
+<!-- filter for step status -->
+<div id='step-status-filter' class='modal bottom-sheet'> 
+<div class='modal-content'> 
+<h5>Select status</h5> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+<label for='step-dashboard-filter-pass'>Pass</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+<label for='step-dashboard-filter-fail'>Fail</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+<label for='step-dashboard-filter-fatal'>Fatal</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+<label for='step-dashboard-filter-error'>Error</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+<label for='step-dashboard-filter-warning'>Warning</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+<label for='step-dashboard-filter-skip'>Skipped</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+<label for='step-dashboard-filter-info'>Info</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+<label for='step-dashboard-filter-unknown'>Unknown</label> 
+</div>
+<div class='modal-footer'> 
+<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+</div> 
+</div>
+<!-- /filter for step status -->
+
+<script src='https://cdn.rawgit.com/anshooarora/extentreports/c936a26fc8bb9c5fc0253b5bc6f289e1d14bb595/cdn/extent.js' type='text/javascript'></script>
+
+<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+<script>
+
+      
+        $(document).ready(function() {
+          
+        });
+      
+    
+</script>
+</body>
+</html>
